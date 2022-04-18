@@ -47,7 +47,7 @@ public class LinkedListNode<T> {
 
     @Override
     public String toString() {
-        return "" + value + "->" +Optional.ofNullable(next).map(LinkedListNode::toString).orElse("null");
+        return "" + value + "->" +Optional.ofNullable(next).map(LinkedListNode::getValue).orElse("null");
 
     }
 }

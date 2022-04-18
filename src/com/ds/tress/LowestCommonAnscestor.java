@@ -30,8 +30,8 @@ public class LowestCommonAnscestor {
             // assign nodes if found
             parentNodes.putIfAbsent(cuNode,new ArrayList<>());
             parentNodes.computeIfPresent(cuNode,(k,v)-> {v.add(cuNode); return  v;});
-            if(cuNode.getValue().equals(leftValue)) n1= cuNode;
-            if(cuNode.getValue().equals(secondVale)) n2 = cuNode;
+            if(cuNode.getData().equals(leftValue)) n1= cuNode;
+            if(cuNode.getData().equals(secondVale)) n2 = cuNode;
 
             if(cuNode.getRight() != null) {
                 nodes.push(cuNode.getRight());

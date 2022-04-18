@@ -4,29 +4,25 @@ import java.util.Objects;
 import java.util.Optional;
 
 public class Node<T> {
-    private T value;
-    private Node left;
-    private Node right;
+    T data;
+    private Node<T> left;
+    private Node<T> right;
 
-    public Node(T value) {
-        this.value = value;
+    public Node(T data) {
+        this.data = data;
     }
 
-    public Node(T value, Node left, Node right) {
-        this.value = value;
+    public Node(T data, Node left, Node right) {
+        this.data = data;
         this.left = left;
         this.right = right;
     }
 
-    public T getValue() {
-        return value;
+    public T getData() {
+        return data;
     }
 
-    public void setValue(T value) {
-        this.value = value;
-    }
-
-    public Node getLeft() {
+    public Node<T> getLeft() {
         return left;
     }
 
@@ -34,7 +30,7 @@ public class Node<T> {
         this.left = left;
     }
 
-    public Node getRight() {
+    public Node<T> getRight() {
         return right;
     }
 
@@ -46,21 +42,21 @@ public class Node<T> {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Node<?> node = (Node<?>) o;
-        return Objects.equals(Optional.ofNullable(value).orElse((T)(Object)0), node.getValue())
-                && Objects.equals(Optional.ofNullable(left).map(Node::getValue).orElse(0), Optional.ofNullable(node.left).map(Node::getValue).orElse(0))
-                && Objects.equals(Optional.ofNullable(right).map(Node::getValue).orElse(0), Optional.ofNullable(node.right).map(Node::getValue).orElse(0));
+        Node<T> node = (Node<T>) o;
+        return Objects.equals(Optional.ofNullable(data).orElse((T)(Object)0), node.getData())
+                && Objects.equals(Optional.ofNullable(left).map(Node::getData).orElse((T)(Object)0), Optional.ofNullable(node.left).map(Node::getData).orElse((T)(Object)0))
+                && Objects.equals(Optional.ofNullable(right).map(Node::getData).orElse((T)(Object)0), Optional.ofNullable(node.right).map(Node::getData).orElse((T)(Object)0));
     }
 
 
     @Override
     public String toString() {
         return "Node{" +
-                "value=" + value +
+                "value=" + data +
                 '}';
     }
     public void process(){
-        System.out.print(value+"->");
+        System.out.print(data +"->");
     }
 
 }

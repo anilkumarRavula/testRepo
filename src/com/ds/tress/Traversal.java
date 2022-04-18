@@ -22,7 +22,7 @@ public class Traversal {
 
     public static void preOrder(Node root) {
         if(root == null) return;
-        System.out.print(root.getValue()+"->");
+        System.out.print(root.getData()+"->");
         preOrder(root.getLeft());
         preOrder(root.getRight());
     }
@@ -33,7 +33,7 @@ public class Traversal {
         deque.addLast(root);
         while(!deque.isEmpty()){
             Node current = deque.poll();
-            System.out.print(current.getValue()+"->");
+            System.out.print(current.getData()+"->");
             if(current.getRight() != null) deque.addFirst(current.getRight());
             if(current.getLeft() != null)  deque.addFirst(current.getLeft());
         }
@@ -44,7 +44,7 @@ public class Traversal {
     static void inOrder(Node root) {
         if(root == null) return;
         inOrder(root.getLeft());
-        System.out.print(root.getValue()+"->");
+        System.out.print(root.getData()+"->");
         inOrder(root.getRight());
 
     }
@@ -60,7 +60,7 @@ public class Traversal {
                current = current.getLeft();
            } else{
                current = deque.poll();
-               System.out.print(current.getValue()+"->");
+               System.out.print(current.getData()+"->");
                current = current.getRight();
            }
         }
@@ -74,13 +74,13 @@ public class Traversal {
         deque.addLast(root);
         while(!deque.isEmpty()){
             Node current = deque.poll();
-            if(!rootNodes.contains(current.getValue())) {
+            if(!rootNodes.contains(current.getData())) {
                 if(current.getRight() != null) deque.addFirst(current.getRight());
                  deque.addFirst(current);
                 if(current.getLeft() != null)  deque.addFirst(current.getLeft());
-                rootNodes.add((Integer) current.getValue());
+                rootNodes.add((Integer) current.getData());
             } else {
-                System.out.print(current.getValue()+"->");
+                System.out.print(current.getData()+"->");
             }
         }
         System.out.println("      inOrderTraditional <-");
@@ -95,9 +95,9 @@ public class Traversal {
             Node current = deque.poll();
                 if(current.getRight() != null) deque.addFirst(current.getRight());
                 if(current.getRight() != null || current.getLeft() != null) {
-                    deque.addFirst(new Node(current.getValue()));
+                    deque.addFirst(new Node(current.getData()));
                 } else {
-                    System.out.print(current.getValue() + "->");
+                    System.out.print(current.getData() + "->");
                 }
                 if(current.getLeft() != null)  deque.addFirst(current.getLeft());
 
@@ -109,7 +109,7 @@ public class Traversal {
         if (root == null) return;
         postOrder(root.getLeft());
         postOrder(root.getRight());
-        System.out.print(root.getValue() + "->");
+        System.out.print(root.getData() + "->");
     }
     static void postOrderIterator(Node root) {
         System.out.println("postOrderIterator ->");
@@ -123,7 +123,7 @@ public class Traversal {
                 current = current.getLeft();
             } else{
                 while(!nodesInQueue.isEmpty() && deque.peek().equals(nodesInQueue.peek())) {
-                    System.out.print(deque.poll().getValue()+"->");
+                    System.out.print(deque.poll().getData()+"->");
                     nodesInQueue.poll();
                 }
                 if(deque.isEmpty()) return;
