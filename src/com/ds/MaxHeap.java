@@ -64,7 +64,7 @@ public class MaxHeap {
         while(position > 0) {
             int parent = (position-1)/2;
             if( heap[parent] < heap[position]) {
-                swapPostions(parent,position);
+                    swapPostions(parent,position);
             } else { //
                return;
             }
