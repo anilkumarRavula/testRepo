@@ -1,5 +1,7 @@
 package src.com.ds.dynamic;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.stream.IntStream;
 
 /**
@@ -36,10 +38,13 @@ import java.util.stream.IntStream;
  * For each query, print YES on a new line if it's possible to make string  equal to string . Otherwise, print NO.
  */
 public class Abbrevation {
+    static int  count = 0;
     public static void main(String[] args) {
 
-        System.out.println(abbreviation("DLgHVgGIR"
-                ,"DLHVGIR"));
+        System.out.println(abbreviationAllCombinations("dlDDLgHVgGIRadc"
+                ,"DLHVGIR",new HashMap<>()));
+
+        System.out.println(count);
     }
     public static String abbreviation(String a, String b) {
         // Write your code here
@@ -76,6 +81,56 @@ public class Abbrevation {
             return  "NO";
         }
         return "YES";
+    }
+    public static boolean abbreviationAllCombinations(String a, String b, Map<String,Boolean > context) {
+        System.out.println(a+","+b);
+        if(b.length() > a.length()) return  false;
+        //handling last element
+        if(a.length() == 1) return isEqual(a,b,0,0);
+        // Write your code here
+        if(context.containsKey(b+","+a)) {
+            return context.get(b+","+a);
+        }
+        int i = 0;
+        int pointer = 0;
+        while (i< b.length() && pointer < a.length() ) { //&& matched.length() <= b.length()
+            boolean found = false;
+            while (pointer < a.length() && found == false) {
+                count++;
+                boolean isEqual = isEqual(a, b, i, pointer);
+                if(isEqual) {
+                    found = true;
+                    if(i+1 < a.length())
+                    found = found && abbreviationAllCombinations(a.substring(Math.min(pointer+1, a.length()-1)),b.substring(i+1),context);
+
+                    if(found)
+                    context.put(b.substring(i)+","+a.substring(pointer),found);
+                    if(!found && !Character.isUpperCase(a.charAt(pointer))) {
+                        context.put(b.substring(i)+","+a.substring(pointer),false);
+                        return false;
+                    }
+
+                } else if(Character.isUpperCase(a.charAt(pointer))){
+                    context.put(b.substring(i)+","+a.substring(pointer),false);
+                    return false;
+                }
+                pointer++;
+            }
+            if(!found) return  false;
+            i++;
+        }
+        if(pointer < a.length() && IntStream.range(pointer,a.length()).map(a::charAt).anyMatch((int letter) -> Character.isUpperCase(letter))) {
+            return  false;
+        }
+        System.out.println(context);
+        return true;
+    }
+
+    private static boolean isEqual(String a, String b, int i, int pointer) {
+        boolean isEqual = Character.isUpperCase(b.charAt(i)) ?
+                b.charAt(i) == Character.toUpperCase(a.charAt(pointer)) :
+                b.charAt(i) == a.charAt(pointer);
+        return isEqual;
     }
 
 }
