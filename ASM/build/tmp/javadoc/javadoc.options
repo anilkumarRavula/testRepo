@@ -1,0 +1,11 @@
+-classpath 'C:\\anil\\codesetup\\ASM\\build\\classes\\java\\main;C:\\anil\\codesetup\\ASM\\build\\resources\\main;C:\\Users\\anil.ravula\\.gradle\\caches\\modules-2\\files-2.1\\asm\\asm-commons\\3.1\\1b607fbfe7889c6fdff1b7c16439ade0a60869ac\\asm-commons-3.1.jar;C:\\Users\\anil.ravula\\.gradle\\caches\\modules-2\\files-2.1\\asm\\asm-tree\\3.1\\c9a5d4334ddf194ea492f22107d45119a5c5322f\\asm-tree-3.1.jar;C:\\Users\\anil.ravula\\.gradle\\caches\\modules-2\\files-2.1\\asm\\asm\\3.1\\c157def142714c544bdea2e6144645702adf7097\\asm-3.1.jar'
+-d 'C:\\anil\\codesetup\\ASM\\build\\docs\\javadoc'
+-doctitle 'ASM 1.0-SNAPSHOT API'
+-notimestamp 
+-quiet 
+-windowtitle 'ASM 1.0-SNAPSHOT API'
+'C:\\anil\\codesetup\\ASM\\src\\main\\java\\com\\asm\\local\\App.java'
+'C:\\anil\\codesetup\\ASM\\src\\main\\java\\com\\asm\\local\\DependencyTracker.java'
+'C:\\anil\\codesetup\\ASM\\src\\main\\java\\com\\asm\\local\\FindingMethodNames.java'
+'C:\\anil\\codesetup\\ASM\\src\\main\\java\\com\\asm\\local\\PrivateMethodAnalysis.java'
+'C:\\anil\\codesetup\\ASM\\src\\main\\java\\com\\asm\\local\\TestRuntime.java'
