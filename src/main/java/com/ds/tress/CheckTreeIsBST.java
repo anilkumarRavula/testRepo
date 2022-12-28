@@ -1,4 +1,4 @@
-package src.com.ds.tress;
+package com.ds.tress;
 
 import java.util.*;
 import java.util.function.BiPredicate;

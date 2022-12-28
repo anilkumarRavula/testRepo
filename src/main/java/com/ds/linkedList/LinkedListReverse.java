@@ -1,4 +1,4 @@
-package src.com.ds.linkedList;
+package com.ds.linkedList;
 
 public class LinkedListReverse {
     public static void main(String[] args) {

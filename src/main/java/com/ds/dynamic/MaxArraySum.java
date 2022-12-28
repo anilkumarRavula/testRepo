@@ -1,4 +1,4 @@
-package src.com.ds.dynamic;
+package com.ds.dynamic;
 
 import java.io.BufferedReader;
 import java.io.FileReader;

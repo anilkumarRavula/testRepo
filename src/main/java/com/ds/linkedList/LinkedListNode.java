@@ -1,4 +1,4 @@
-package src.com.ds.linkedList;
+package com.ds.linkedList;
 
 import java.util.Objects;
 import java.util.Optional;

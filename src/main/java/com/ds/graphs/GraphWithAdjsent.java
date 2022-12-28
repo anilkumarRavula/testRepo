@@ -1,4 +1,4 @@
-package src.com.ds.graphs;
+package com.ds.graphs;
 
 public class GraphWithAdjsent {
     private int numOfNodes;

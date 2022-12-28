@@ -1,4 +1,4 @@
-package src.com.ds.tress;
+package com.ds.tress;
 
 public class PrintNodesAtKDistance {
     public static void main(String[] args) {

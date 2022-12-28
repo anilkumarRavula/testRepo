@@ -1,11 +1,11 @@
-package src.com.ds.graphs;
+package com.ds.graphs;
 
 import java.util.ArrayDeque;
 import java.util.Deque;
 import java.util.HashSet;
 import java.util.Queue;
 
-import static src.com.ds.graphs.Graph.*;
+import static com.ds.graphs.Graph.*;
 
 public class GraphTraversal {
     public static void main(String[] args) {

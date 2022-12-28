@@ -1,8 +1,8 @@
-package src.com.ds.graphs;
+package com.ds.graphs;
 
 import java.util.*;
 
-import static src.com.ds.graphs.WeightedGraph.*;
+import static com.ds.graphs.WeightedGraph.*;
 
 public class ShortestPathDj {
     public static void main(String[] args) {

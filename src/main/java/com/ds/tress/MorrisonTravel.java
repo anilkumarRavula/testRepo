@@ -1,8 +1,8 @@
-package src.com.ds.tress;
+package com.ds.tress;
 
 import com.sun.jdi.event.ThreadStartEvent;
 
-import static src.com.ds.tress.Traversal.preOrderTraditional;
+import static com.ds.tress.Traversal.preOrderTraditional;
 
 public class MorrisonTravel {
     public static void main(String[] args) {

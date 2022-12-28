@@ -1,4 +1,4 @@
-package src.com.ds.map;
+package com.ds.map;
 
 import java.util.HashMap;
 import java.util.Map;

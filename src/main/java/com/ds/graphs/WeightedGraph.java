@@ -1,4 +1,4 @@
-package src.com.ds.graphs;
+package com.ds.graphs;
 
 import java.util.*;
 import java.util.stream.Collectors;
