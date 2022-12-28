@@ -97,7 +97,6 @@ public class ShortestPathDj {
         Map<String, String>  parent = new HashMap<>();
         parent.put(source.getName(),null);
         weights.put(source.getName(),0.0f);
-        HashSet<Node> visitedNodes = new HashSet<>();
         PriorityQueue<Edge> nodes = new PriorityQueue<>((e1, e2) -> ((Float) e1.getWeight()).compareTo(e2.getWeight()));
         nodes.add(new Edge(source,null,0.0f));
         Node current = source;

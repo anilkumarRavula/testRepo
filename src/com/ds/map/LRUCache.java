@@ -29,6 +29,7 @@ public class LRUCache {
         if(hashMap.containsKey(data) && head.data != data) {
             //remove and add to head
             Node curent = hashMap.get(data);
+            //delink and assign
             curent.prev.next = curent.next;
             if (tail.data == curent.data) {
                 removeNAssignTail();

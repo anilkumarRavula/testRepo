@@ -34,7 +34,7 @@ public class MaxHeap {
         while(position <= pointer) {
             int rightChild = position* 2 + 2; //1
             int leftChild = position* 2 + 1;  // 1
-            if(rightChild <= pointer && heap[leftChild] < heap[rightChild]) {
+            if(rightChild <= pointer && heap[position] < heap[rightChild]) {
                  swapPostions(position, rightChild);
                  position = rightChild;
             } else if(leftChild <= pointer && heap[leftChild] > heap[position]){ //handle left child
