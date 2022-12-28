@@ -1,0 +1,40 @@
+plugins {
+    id 'java'
+}
+
+group 'org.example'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenLocal()
+    mavenCentral(url: "http://nexusdev.oaknorth.ai/repository/maven-public/",allowInsecureProtocol: true)
+}
+
+dependencies {
+/*
+    implementation group: 'org.ow2.asm', name: 'asm', version: '9.3'
+    implementation group: 'org.ow2.asm', name: 'asm-util', version: '9.3'
+    implementation group: 'org.ow2.asm', name: 'asm-analysis', version: '9.3'
+    implementation group: 'org.ow2.asm', name: 'asm-tree', version: '9.3'
+    implementation group: 'org.ow2.asm', name: 'asm-commons', version: '9.3'
+*/
+    implementation group: 'asm', name: 'asm', version: '3.1'
+    implementation group: 'asm', name: 'asm-commons', version: '3.1'
+
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.7.2'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.7.2'
+
+    implementation 'org.eclipse.jgit:org.eclipse.jgit:5.13.0.202109080827-r'
+    implementation 'org.eclipse.jgit:org.eclipse.jgit.archive:5.13.0.202109080827-r'
+    implementation 'org.eclipse.jgit:org.eclipse.jgit.ssh.jsch:5.13.0.202109080827-r'
+    implementation 'commons-io:commons-io:2.11.0'
+    implementation 'org.slf4j:slf4j-simple:1.7.36'
+   // implementation group: 'org.apache.fineract.cn.portfolio' , name: 'service'  ,  version:'11.300.0-BUILD-SNAPSHOT'
+
+}
+
+
+
+test {
+    useJUnitPlatform()
+}
