@@ -4,7 +4,7 @@ public class DetectCycleInLikedList {
     private static void print(LinkedListNode head) {
         while(head != null) {
             System.out.println(head);
-            head = head.getNext();
+            head = head.next();
         }
     }
 
@@ -16,8 +16,8 @@ public class DetectCycleInLikedList {
         while(current != null && forward != null) {
             System.out.println(current);
             prev = current;
-            current = current.getNext();
-            forward = forward.getNext() != null ? ((forward.getNext().getNext()) != null ? forward.getNext().getNext() : forward.getNext()) : null;
+            current = current.next();
+            forward = forward.next() != null ? ((forward.next().next()) != null ? forward.next().next() : forward.next()) : null;
             System.out.println(loops++);
            // System.out.println("forward"+forward);
             if(current == forward) break;
@@ -27,19 +27,19 @@ public class DetectCycleInLikedList {
         System.out.println(forward);
 
         if(root == forward) {
-            prev.setNext(null);
+            prev.next(null);
         } else{
             current = root;
-            while (current.getNext() != null) {
-                LinkedListNode next = current.getNext();
+            while (current.next() != null) {
+                LinkedListNode next = current.next();
 
                 if(next == forward) {
                     // previous in sync
                     if(prev == current) {
-                        forward.setNext(null);
+                        forward.next(null);
                         break;
                     } else {
-                        prev.setNext(null);
+                        prev.next(null);
                         break;
                     }
                 }
@@ -53,8 +53,8 @@ public class DetectCycleInLikedList {
         LinkedListNode head = new LinkedListNode(1);
 
         LinkedListNode circular = new LinkedListNode(2,new LinkedListNode(3,new LinkedListNode(4)));
-        circular.getNext().getNext().setNext(new LinkedListNode(5,new LinkedListNode(6,head)));
-        head.setNext(circular);
+        circular.next().next().next(new LinkedListNode(5,new LinkedListNode(6,head)));
+        head.next(circular);
         hasCycle(head);
         System.out.println("After cycle detection");
         print(head);

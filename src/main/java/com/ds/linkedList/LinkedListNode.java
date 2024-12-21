@@ -20,7 +20,7 @@ public class LinkedListNode<T> {
         this.next = next;
     }
 
-    public T getValue() {
+    public T val() {
         return value;
     }
 
@@ -28,11 +28,11 @@ public class LinkedListNode<T> {
         this.value = value;
     }
 
-    public LinkedListNode getNext() {
+    public LinkedListNode next() {
         return next;
     }
 
-    public void setNext(LinkedListNode next) {
+    public void next(LinkedListNode next) {
         this.next = next;
     }
 
@@ -41,13 +41,13 @@ public class LinkedListNode<T> {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         LinkedListNode<?> linkedListNode = (LinkedListNode<?>) o;
-        return Objects.equals(Optional.ofNullable(value).orElse((T)(Object)0), linkedListNode.getValue());
+        return Objects.equals(Optional.ofNullable(value).orElse((T)(Object)0), linkedListNode.val());
     }
 
 
     @Override
     public String toString() {
-        return "" + value + "->" +Optional.ofNullable(next).map(LinkedListNode::getValue).orElse("null");
+        return "" + value + "->" +Optional.ofNullable(next).map(LinkedListNode::val).orElse("null");
 
     }
 }

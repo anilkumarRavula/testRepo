@@ -53,10 +53,10 @@ public class FindingMethodNames {
             Map<Integer, String> lines = stream.collect(Collectors.toMap(line -> atomicInteger.incrementAndGet(), Function.identity()));
             // identify methods in the source file
             return lines.entrySet().stream().filter(integerStringEntry -> {
-                final Matcher matcher = pattern.matcher(integerStringEntry.getValue());
+                final Matcher matcher = pattern.matcher(integerStringEntry.val());
                 return matcher.find();
             }).collect(Collectors.toMap(Map.Entry::getKey, entry -> {
-                String name = entry.getValue();
+                String name = entry.val();
                 System.out.println(name);
                 return trimToMethodNameAndReturnType(name);
             }, (k1, k2) -> k2, () -> new TreeMap<>()));
@@ -83,7 +83,7 @@ public class FindingMethodNames {
         System.out.println(lineNumberAndString);
         ArrayList<String> macthedMethods = getMatchedLines(filePath);
         Map<String, String> partsAndMap = contructMethodNameAndParts(macthedMethods);
-        return lineNumberAndString.entrySet().stream().filter(entry -> partsAndMap.containsKey(entry.getValue())).collect(Collectors.toMap(Map.Entry::getKey, entry -> partsAndMap.get(entry.getValue()), (k1, k2) -> k2, () -> new TreeMap<>()));
+        return lineNumberAndString.entrySet().stream().filter(entry -> partsAndMap.containsKey(entry.val())).collect(Collectors.toMap(Map.Entry::getKey, entry -> partsAndMap.get(entry.val()), (k1, k2) -> k2, () -> new TreeMap<>()));
     }
 
     private static Map<String, String> contructMethodNameAndParts(List<String> macthedMethods) {

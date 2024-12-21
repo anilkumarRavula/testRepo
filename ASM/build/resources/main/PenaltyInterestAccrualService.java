@@ -212,7 +212,7 @@ public class PenaltyInterestAccrualService {
                     .fetchAllNonZeroDeferredDemandEntitiesForPenalty(loanAccount.getIdentifier());
         }
         deferredDemandEntities.forEach(dd -> {
-            if (dd.getNextDeferDate().isAfter(eventDate)) {
+            if (dd.nextDeferDate().isAfter(eventDate)) {
                 Optional<Demand> d = loanMasterDTO.getDemandList()
                         .stream()
                         .filter(x -> x.getId().equals(dd.getDemandId()))
@@ -240,7 +240,7 @@ public class PenaltyInterestAccrualService {
 
     private boolean isDeferredPenaltyDemandForPrincipalDue(List<DeferredDemandEntity> deferredDemandEntities, Demand demand,boolean principalDueFlag){
         return principalDueFlag && deferredDemandEntities.stream().anyMatch(x -> !x.isReversed()
-                && x.getNextDeferDate().equals(LocalDate.parse(demand.getDemandDate()))
+                && x.nextDeferDate().equals(LocalDate.parse(demand.getDemandDate()))
                 && x.getOriginalDeferredAmount().compareTo(demand.getDueAmount()) == 0);
     }
 
@@ -252,7 +252,7 @@ public class PenaltyInterestAccrualService {
             loanMasterDTO = loanMasterDTOUtil.create(loanAccount);
         }
         for (Map.Entry<Long, List<LoanScheduleModelRepaymentPeriod>> tranche : trancheWiseInstallments.entrySet()) {
-            List<LoanScheduleModelRepaymentPeriod> installments = tranche.getValue();
+            List<LoanScheduleModelRepaymentPeriod> installments = tranche.val();
             List<LoanScheduleModelRepaymentPeriod> dueInstallments = installments.stream().filter(x ->
                     !DateConverter.dateFromIsoString(x.getInstallmentDate() + "Z")
                             .isBefore(loanPenaltyInterestHistoryEntity.getStartDate())
@@ -1238,7 +1238,7 @@ public class PenaltyInterestAccrualService {
         List<DeferredDemandEntity> deferredDemandEntities = deferDemandService
                 .fetchAllDeferredDemandEntitiesForPenalty(loanId)
                 .stream()
-                .filter(x -> x.getNextDeferDate().isAfter(eventDate))
+                .filter(x -> x.nextDeferDate().isAfter(eventDate))
                 .collect(Collectors.toList());
         if (!deferredDemandEntities.isEmpty()) {
             List<Long> demandIds = deferredDemandEntities.stream().map(DeferredDemandEntity::getDemandId).collect(Collectors.toList());
@@ -1377,7 +1377,7 @@ public class PenaltyInterestAccrualService {
         List<DeferredDemandEntity> penaltyDeferredDemands = deferDemandService
                 .fetchAllDeferredDemandEntitiesForPenalty(loanAccount.getIdentifier())
                 .stream()
-                .filter(x -> !x.getNextDeferDate().isAfter(runDate))
+                .filter(x -> !x.nextDeferDate().isAfter(runDate))
                 .collect(Collectors.toList());
 
         penaltyDuesWithoutDemand = penaltyDues

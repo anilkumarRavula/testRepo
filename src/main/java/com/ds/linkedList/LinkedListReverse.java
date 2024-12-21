@@ -12,12 +12,12 @@ public class LinkedListReverse {
         prev = null;
         int carry = 1;
         while(current != null) {
-            System.out.println(current.getValue());
-            int newValue = current.getValue()+carry;
+            System.out.println(current.val());
+            int newValue = current.val()+carry;
             carry =  newValue > 9 ?  1 :  0;
             current.setValue(newValue%10);
-            LinkedListNode nextNode =  current.getNext();
-            current.setNext(prev);
+            LinkedListNode nextNode =  current.next();
+            current.next(prev);
             prev = current;
             current = nextNode;
         }
@@ -30,9 +30,9 @@ public class LinkedListReverse {
     private static LinkedListNode<Integer> reverseLinkedList(LinkedListNode<Integer> current) {
         LinkedListNode<Integer> prev = null;
         while(current != null) {
-            System.out.println(current.getValue());
-            LinkedListNode nextNode =  current.getNext();
-            current.setNext(prev);
+            System.out.println(current.val());
+            LinkedListNode nextNode =  current.next();
+            current.next(prev);
             prev = current;
             current = nextNode;
         }

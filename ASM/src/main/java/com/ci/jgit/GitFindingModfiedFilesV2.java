@@ -78,7 +78,7 @@ public class GitFindingModfiedFilesV2 {
                             Map.Entry methods = lineNumbersAndMethods.floorEntry(edit.getBeginA());
                             if(methods != null) {
                                 System.out.println("================");
-                                System.out.println("Modfied method "+ methods.getValue() );
+                                System.out.println("Modfied method "+ methods.val() );
                                 System.out.println("================");
 
                             }
@@ -97,9 +97,9 @@ public class GitFindingModfiedFilesV2 {
             Map<Integer,String> lines = stream.collect(Collectors.toMap(line -> atomicInteger.incrementAndGet(), Function.identity()));
             // identify methods in the source file
            return lines.entrySet().stream().filter(integerStringEntry -> {
-                final Matcher matcher = pattern.matcher(integerStringEntry.getValue());
+                final Matcher matcher = pattern.matcher(integerStringEntry.val());
                 return matcher.find();
-            }).collect(Collectors.toMap(Map.Entry::getKey,Map.Entry::getValue, (k1,k2)-> k2,()-> new TreeMap<>()));
+            }).collect(Collectors.toMap(Map.Entry::getKey,Map.Entry::val, (k1,k2)-> k2,()-> new TreeMap<>()));
            // System.out.println(lines);
         }
     }
