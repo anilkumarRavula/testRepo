@@ -32,7 +32,7 @@ public class Combinations {
         System.out.println();
        // System.out.println(letterCombinations("2"));
        // System.out.println(letterCombinations("7"));
-        System.out.println(letterCombinationsRecursive(""));
+        System.out.println(letterCombinationsBackTrack("2345"));
        /* System.out.println(letterCombinations("2345"));
         System.out.println(letterCombinations("237"));
         System.out.println(letterCombinations2("23"));
@@ -142,25 +142,27 @@ public class Combinations {
 
         return output;
     }
-
+    static String[] keyMapping = new String[] {"","","abc","def","ghi","jkl","mno","pqrs","tuv","wxyz"};
+    static List<String> output  = new ArrayList<>();
     public static List<String> letterCombinationsBackTrack(String digits) {
-        String[] keyMapping = new String[] {"","","abc","def","ghi","jkl","mno","pqrs","tuv","wxyz"};
-        List<String> inputs = new ArrayList<>();
-        for (char digit: digits.toCharArray()) {
-            Integer value = digit - '0';
-            inputs.add(keyMapping[value]);
-        }
-
-
-        List<String> output = buildList(inputs,inputs.size()-1);
+        if(digits.length() < 1) return new ArrayList<>();
+        List<String> output = backTrack(digits,0,new StringBuilder());
 
         System.out.println(output.size()+"-->"+new HashSet<>(output).size());
         return output;
     }
 
-    private static List<String> backTrack(List<String> inputs, int position) {
-        if(position < 0) return  new ArrayList<>();
-
+    private static List<String> backTrack(String inputs, int position,StringBuilder builder) {
+        if(position >= inputs.length()) {
+            output.add(builder.toString());
+            return output;
+        }
+        //ger digit at position
+        for (char c :keyMapping[inputs.charAt(position)-'0'].toCharArray()) {
+            builder.append(c);
+            backTrack( inputs,  position+1, builder);
+            builder.deleteCharAt(builder.length()-1);
+        }
 
         return output;
     }
