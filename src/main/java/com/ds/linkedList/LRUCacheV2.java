@@ -86,10 +86,10 @@ public class LRUCacheV2 {
         if(node == tail) return;
         DoubleListNode previousNode = node.prev;      //h 2 -<1 3 4 t
         addToTail(node);
-        if(head == node){
+        if(head == node){                           //if it is head node
             head = head.next;
             head.prev = null;
-        } else if(previousNode != null){ //new node
+        } else if(previousNode != null){ //new node       // existing node
             previousNode.next = node.next;
             previousNode.prev = previousNode.next;
         }
