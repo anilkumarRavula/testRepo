@@ -32,6 +32,8 @@ public class ShortestPathDj {
 
         graphWeighted.printEdges();
         shortestPathDirectedGraph(zero, six);
+        shortestPathInUndirectedGraph(zero, six);
+
     }
 
 

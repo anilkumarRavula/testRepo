@@ -24,8 +24,8 @@ public class GraphTraversal {
         graph.addEdge(c,e);
 
         graph.printEdges();
-        bfs(a,graph);
-        dfs(a,graph);
+      //  bfs(a,graph);
+       // dfs(a,graph);
     }
 
     public static void bfs(Node node, Graph graph) {

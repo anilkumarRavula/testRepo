@@ -55,7 +55,7 @@ public class LongestSubString {
             return Math.max(characterPositions.size(),length);
         }
         private static void removeKeys(Map<Character, Integer> characterPositions, int position, String s,int curent) {
-            for (int i = curent-characterPositions.size(); i <= position; i++) {
+            for (int i = curent-characterPositions.size(); i <= position; i++) { //abcadf
                 characterPositions.remove(s.charAt(i));
             }
         }
@@ -65,11 +65,11 @@ public class LongestSubString {
             int maxLength = 0;
             int left = 0;
             int[] charIndex = new int[128];
-            for (int right = 0; right < s.length(); right++) {
+            for (int right = 0; right < s.length(); right++) { //abcabcbb
                 char currentChar = s.charAt(right);
                 left = Math.max(left, charIndex[currentChar]);
-                maxLength = Math.max(maxLength, right - left + 1);
                 charIndex[currentChar] = right + 1;
+                maxLength = Math.max(maxLength, right - left + 1);
             }
             return maxLength;
         }
