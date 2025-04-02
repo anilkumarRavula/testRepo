@@ -22,6 +22,7 @@ static List<Employee> employees = buildEmp();
 
     public static void main(String[] args) {
         getEmployeesDepartmentWiseByMaleEmplyeesAgeGreaterThan27OrFemaleEmployeesGreterThan23();
+        new PartitionByExamples().getMaleAndFemaleEmployees();
     }
     //get department wise employees who is age is above 27 for male and 23 for female
     private static void getEmployeesDepartmentWiseByMaleEmplyeesAgeGreaterThan27OrFemaleEmployeesGreterThan23() {
@@ -38,5 +39,16 @@ static List<Employee> employees = buildEmp();
                 && emp.getAge()>= 23).collect(Collectors.groupingBy(Employee::getGender));
 
         System.out.println(temps);
+    }
+
+    static class PartitionByExamples {
+
+        //collect all male and female partions
+        public  void getMaleAndFemaleEmployees() {
+            Map<Boolean,List<Employee>> temps = employees.stream().collect(Collectors.partitioningBy(emp->emp.getGender().equals("M")));
+            System.out.println(temps);
+        }
+
+
     }
 }

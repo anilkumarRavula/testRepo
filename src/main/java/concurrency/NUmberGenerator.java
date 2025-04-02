@@ -89,10 +89,10 @@ public class NUmberGenerator {
 
      class SequentialNumberPrinterCyclicBarrier {
         private static final int MAX_NUMBER = 100;
-        private static AtomicInteger currentNumber = new AtomicInteger(1);  // Atomic integer for thread-safe counting
+        private  AtomicInteger currentNumber = new AtomicInteger(1);  // Atomic integer for thread-safe counting
         private static final int NUM_THREADS = 4;
 
-        public static void main(String[] args) {
+        public  void main(String[] args) {
             ExecutorService executorService = Executors.newFixedThreadPool(NUM_THREADS);
 
             // Create a CyclicBarrier that will trigger when all threads reach the barrier
