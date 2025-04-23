@@ -3,7 +3,7 @@ package com.ds.graphs;
 import java.util.*;
 
 import static com.ds.graphs.WeightedGraph.*;
-
+import static com.ds.graphs.WeightedGraph.Node;
 public class ShortestPathDj {
     public static void main(String[] args) {
         WeightedGraph graphWeighted = new WeightedGraph(true);
