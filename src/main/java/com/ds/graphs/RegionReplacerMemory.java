@@ -188,5 +188,65 @@ public class RegionReplacerMemory {
             return x >= 0 && x < totalRows && y >= 0 && y < totalCols;
         }
     }
+class OnlineSolution {
+    private void dfs(int x, int y, int[] delrows, int[] delcols, boolean[][] vis, char[][] board) {
+
+        if (board[x][y] == 'O') {
+            vis[x][y] = true;
+
+        }
+
+        for (int i = 0; i < 4; i++) {
+            int nx = x + delrows[i];
+            int ny = y + delcols[i];
+            if (nx >= 0 && nx < board.length && ny >= 0 && ny < board[0].length && board[nx][ny] == 'O' && !vis[nx][ny]) {
+                dfs(nx, ny, delrows, delcols, vis, board);
+            }
+        }
+    }
+
+
+    public void solve(char[][] board) {
+        int n = board.length;
+        int m = board[0].length;
+        boolean vis[][] = new boolean[n][m];
+        int delrows[] = {-1, 1, 0, 0};
+        int delcols[] = {0, 0, -1, 1};
+
+        for (int i = 0; i < n; i++) {
+            if (board[i][0] == 'O' && !vis[i][0]) {
+                dfs(i, 0, delrows, delcols, vis, board);
+            }
+        }
+        for (int i = 0; i < n; i++) {
+            if (board[i][m - 1] == 'O' && !vis[i][m - 1]) {
+                dfs(i, m - 1, delrows, delcols, vis, board);
+            }
+        }
+        for (int j = 0; j < m; j++) {
+            if (board[0][j] == 'O' && !vis[0][j]) {
+                dfs(0, j, delrows, delcols, vis, board);
+            }
+        }
+        for (int j = 0; j < m; j++) {
+            if (board[n - 1][j] == 'O' && !vis[n - 1][j]) {
+                dfs(n - 1, j, delrows, delcols, vis, board);
+            }
+        }
+
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < m; j++) {
+                if (board[i][j] == 'O' && vis[i][j]) {
+                    board[i][j] = 'O';
+                } else {
+                    board[i][j] = 'X';
+                }
+            }
+        }
+
+
+    }
+}
+
 
     }
