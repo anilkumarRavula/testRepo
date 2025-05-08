@@ -40,10 +40,10 @@ public class ShortestPathDj {
     private static void shortestPathInUndirectedGraph(Node source, Node desgtination) {
 
         Map<String, Float>  weights = new HashMap<>();
-        Map<String, String>  parent = new HashMap<>();
+        //Map<String, String>  parent = new HashMap<>();
         Queue<Node> nodes = new LinkedList<>();
         nodes.add(source);
-        parent.put(source.getName(),null);
+        //parent.put(source.getName(),null);
         weights.put(source.getName(),0.0f);
 
         HashSet<Node> visitedNodes = new HashSet<>();
@@ -59,11 +59,11 @@ public class ShortestPathDj {
                 if(weights.containsKey(edge.getDest().getName()) ) { //|| parent.getOrDefault(edge.getSource().name,"").equals(edge.getDest().name)
                     if(weights.get(edge.getDest().getName()) > weight) {
                         weights.put(edge.getDest().getName(),weight);
-                        parent.put(edge.getDest().getName(),current.getName());
+                       // parent.put(edge.getDest().getName(),current.getName());
                     }
                 } else {
                     weights.put(edge.getDest().getName(),weight);
-                    parent.put(edge.getDest().getName(),current.getName());
+                   // parent.put(edge.getDest().getName(),current.getName());
                 }
 
                weight = edge.getWeight()+weights.getOrDefault(edge.getDest().getName(),0.0f);
@@ -71,7 +71,7 @@ public class ShortestPathDj {
                if(weights.containsKey(current.getName()) ) { //|| parent.getOrDefault(edge.getSource().name,"").equals(edge.getDest().name)
                    if(weights.get(current.getName()) > weight) {
                        weights.put(current.getName(),weight);
-                       parent.put(current.getName(),edge.getDest().getName());
+                       //parent.put(current.getName(),edge.getDest().getName());
                    }
                }
 
@@ -79,12 +79,12 @@ public class ShortestPathDj {
 
             visitedNodes.add(current);
             System.out.println(weights);
-            System.out.println(parent);
+           // System.out.println(parent);
 
             System.out.println();
         }
         System.out.println(weights);
-        System.out.println(parent);
+        //System.out.println(parent);
 
     }
 
@@ -96,8 +96,8 @@ public class ShortestPathDj {
     private static void shortestPathDirectedGraph(Node source, Node desgtination) {
 
         Map<String, Float>  weights = new HashMap<>();
-        Map<String, String>  parent = new HashMap<>();
-        parent.put(source.getName(),null);
+        //Map<String, String>  parent = new HashMap<>();
+       // parent.put(source.getName(),null);
         weights.put(source.getName(),0.0f);
         PriorityQueue<Edge> nodes = new PriorityQueue<>((e1, e2) -> ((Float) e1.getWeight()).compareTo(e2.getWeight()));
         nodes.add(new Edge(source,null,0.0f));
@@ -114,23 +114,23 @@ public class ShortestPathDj {
                 if(weights.containsKey(edge.getDest().getName()) ) { //|| parent.getOrDefault(edge.getSource().name,"").equals(edge.getDest().name)
                     if(weights.get(edge.getDest().getName()) > weight) {
                         weights.put(edge.getDest().getName(),weight);
-                        parent.put(edge.getDest().getName(),edge.getSource().getName());
+                       // parent.put(edge.getDest().getName(),edge.getSource().getName());
                     }
                 } else {
                     weights.put(edge.getDest().getName(),weight);
-                    parent.put(edge.getDest().getName(),edge.getSource().getName());
+                  //  parent.put(edge.getDest().getName(),edge.getSource().getName());
                 }
                 nodes.add(new Edge(edge.getDest(),null,weights.get(edge.getDest().getName())));
             });
 
             current.setVisited(true);
             System.out.println(weights);
-            System.out.println(parent);
+           // System.out.println(parent);
 
             System.out.println();
         }
         System.out.println(weights);
-        System.out.println(parent);
+       // System.out.println(parent);
 
     }
 }

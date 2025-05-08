@@ -21,22 +21,23 @@ package interview;
 
 
 public class Main {
-   static  int[][] travelCOsts = new int[][] {new int[] {9, 4, 9, 9},
-            new int[] {6, 7, 6, 4},
-            new int[] {8, 3, 3, 11},
-            new int[] {7, 4, 9, 10}};
+    static int[][] travelCOsts = new int[][]{new int[]{9, 4, 9, 9},
+            new int[]{6, 7, 6, 4},
+            new int[]{8, 3, 3, 11},
+            new int[]{7, 4, 9, 10}};
     static int destinationRow = 3;
     static int destinationPostion = 3;
-    static  int[][] vistedPaths = new int[4][4] ;
+    static int[][] vistedPaths = new int[4][4];
 
 
     public static void main(String[] args) {
         System.out.println("Hello, World!");
-        minimumCost(0,0);
+       // minimumCost(0, 0);
     }
 
-    private int minimumCost(int row,int postion,int currentCost) {
-        if(postion > 3 || row > 3) {
-            return 0;
-        }
+    private int minimumCost(int row, int postion, int currentCost) {
+        if (postion > 3 || row > 3) return 0;
+        return row;
+    }
+}
 
