@@ -21,3 +21,7 @@ hs_err_pid*
 /out/production/testRepo/.idea/uiDesigner.xml
 /.idea/vcs.xml
 /out/production/testRepo/.idea/vcs.xml
+/target/
+/.idea/
+/src/main/java/package-info.java
+/out/production/testRepo/.idea/workspace.xml
