@@ -7,7 +7,7 @@ import java.util.*;
  *
  * Each row must contain the digits 1-9 without repetition.
  * Each column must contain the digits 1-9 without repetition.
- * Each of the nine 3 x 3 sub-boxes of the grid must contain the digits 1-9 without repetition.
+ * Each of the any nine 3 x 3 sub-boxes of the grid must contain the digits 1-9 without repetition.
  * Note:
  *
  * A Sudoku board (partially filled) could be valid but is not necessarily solvable.
@@ -27,7 +27,10 @@ import java.util.*;
  * ,[".","6",".",".",".",".","2","8","."]
  * ,[".",".",".","4","1","9",".",".","5"]
  * ,[".",".",".",".","8",".",".","7","9"]]
- * Output: true
+ * Output: false
+ *
+ * [1,0] at postion 1,0 there are 2 8's
+ * 6...988false
  * Example 2:
  *
  * Input: board =
@@ -55,14 +58,14 @@ public class ValidSudoku {
 
         char[][] board = {
                 {'5','3','.','.','7','.','.','.','.'},
-                {'6','.','4','1','9','5','.','.','.'},
-                {'2','9','8','.','.','.','.','6','.'},
-                {'1','.','.','.','6','.','.','.','3'},
+                {'6','.','.','1','9','5','.','.','.'},
+                {'.','9','2','.','.','.','.','6','.'},
+                {'8','.','.','.','6','.','.','.','3'},
                 {'4','.','.','8','.','3','.','.','1'},
-                {'7','.','.','.','2','.','.','.','6'},
+                {'7','.','.','.','.','.','.','.','6'},
                 {'.','6','.','.','.','.','2','8','.'},
-                {'.','.','.','4','1','9','8','2','5'},
-                {'.','.','.','.','8','.','1','7','9'}
+                {'.','.','.','4','1','9','.','.','5'},
+                {'.','.','.','.','8','.','.','7','9'}
         };
         System.out.println(new Solution().isValidSudoku(board));
     }
@@ -77,43 +80,31 @@ public class ValidSudoku {
         }
 
         private boolean hasUniqueValuesSubMatrix(char[][] board) {
-            int startRow = 1;
-            int startCol = 1;
+            int startRow = 0;
+            int startCol = 0;
             Set<Character> characters = new HashSet<>();
             // matrix 3
-            List<int[]> directions = new ArrayList<>();
-            for (int i = 1; i <3 ; i++) {
-                for (int j = 1; j <3 ; j++) {
-                    directions.add(new int[]{-i,-j});
-                    directions.add(new int[]{i,-j});
-                    directions.add(new int[]{-i,j});
-                    directions.add(new int[]{i,j});
-                }
-            }
+            int size = 3;
             //int[][] directions= new int[][] { new int[]{-1,-1},new int[]{+1,-1},new int[]{-1,+1},new int[]{+1,+1} };
-            directions.stream().forEach(val-> System.out.println(Arrays.toString(val)));
             for (int i = startRow; i < board.length-1; i++) {
                 System.out.println(characters);
                 characters.clear();
-
                 for (int j = startCol; j < board[0].length-1; j++) {
-
                     characters.clear();
-                    characters.add(board[i][j]);
+                   // characters.add(board[i][j]);
                     System.out.println("["+i+","+j+"]");
-                    for (int[] direction : directions) {
-                        int row = i+direction[0];
-                        int col = j+direction[1];
-                        if(row <0 || col <0 || row >= board.length || col >= board[0].length) continue;
-                       // System.out.println("["+row+","+col+"]");
-
-                        char current = board[i+direction[0]][j+direction[1]];
-                        System.out.print(current);
-                        if(current != '.') {
-                            if(characters.contains(current)) {
-                                return false;
+                    for (int row = i; row <i+size ; row++) {
+                        for (int col = j; col < j + size; col++) {
+                            if (row < 0 || col < 0 || row >= board.length || col >= board[0].length) continue;
+                            // System.out.println("["+row+","+col+"]");
+                            char current = board[row][col];
+                            System.out.print(current);
+                            if (current != '.') {
+                                if (characters.contains(current)) {
+                                    return false;
+                                }
+                                characters.add(current);
                             }
-                            characters.add(current);
                         }
                     }
                     System.out.println();
