@@ -39,34 +39,34 @@ public class CoingChange {
             if(amount == 0 ) return 0;
             Arrays.sort(coins);
             System.out.println("===============");
-
+            int[] minCoins = new int[]{coins.length};
+            Arrays.fill(minCoins,Integer.MAX_VALUE);
             System.out.println(Arrays.toString(coins));
             System.out.println("===============");
 
-            return coinChange(coins,amount,0,coins.length);
+            return coinChange(coins,amount,0,coins.length,minCoins);
         }
-        public int coinChange(int[] coins, int amount,int fromIndex,int toIndex) {
-            System.out.println(amount+"--->"+fromIndex);
+        public int coinChange(int[] coins, int amount,int fromIndex,int toIndex,int[] minCoins) {
+            System.out.println(amount+"--->"+fromIndex+"--"+toIndex);
             if(amount == 0 ) return 0;
-            int minCoins = -1;
             int index = Arrays.binarySearch(coins,fromIndex,toIndex,amount);
             //insertion point in range
             if(index < 0 ) {
                 index = -(index+1) -1;
-                if(index <0) return minCoins; // not in range
+                if(index <0) return -1; // not in range
             }
             int coinsAdded = amount/coins[index];
 
             while(coinsAdded > 0) {
                 System.out.println(coinsAdded+"--coins--->"+coins[index]+"-->"+(amount-(coins[index]*coinsAdded)));
 
-                int additonalCoins = coinChange(coins,amount-(coins[index]*coinsAdded),0,index);
+                int additonalCoins = coinChange(coins,amount-(coins[index]*coinsAdded),0,index,minCoins);
                 //System.out.println(index +"add"+ additonalCoins);
-                if(additonalCoins > -1) return coinsAdded+additonalCoins;
+                if(additonalCoins > -1)  minCoins[index] = Math.min(coinsAdded+additonalCoins,minCoins[index]);
                 coinsAdded--;
 
             }
-            return minCoins;
+            return Arrays.stream(minCoins).min().getAsInt();
         }
     }
 }
