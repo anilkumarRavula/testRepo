@@ -40,11 +40,11 @@ import java.util.Arrays;
  */
 public class TargetSumArraySored {
     public static void main(String[] args) {
-        System.out.println(Arrays.toString(twoSum(new int[] {-3,3,4,90},0)));
-        System.out.println(Arrays.toString(twoSum(new int[] {-2,-1,-1,0},-3)));
-        System.out.println(Arrays.toString(twoSum(new int[] {-1,-1,0},-1)));
-        System.out.println(Arrays.toString(twoSum(new int[] {-4,-1,0,2,3,4},0)));
-        System.out.println(Arrays.toString(twoSum(new int[] {-4,-1,0,1,1,2},-2)));
+        System.out.println(Arrays.toString(new Solution().twoSum(new int[] {-3,3,4,90},0)));
+        System.out.println(Arrays.toString(new Solution().twoSum(new int[] {-2,-1,-1,0},-3)));
+        System.out.println(Arrays.toString(new Solution().twoSum(new int[] {-1,-1,0},-1)));
+        System.out.println(Arrays.toString(new Solution().twoSum(new int[] {-4,-1,0,2,3,4},0)));
+        System.out.println(Arrays.toString(new Solution().twoSum(new int[] {-4,-1,0,1,1,2},-2)));
 
 
     }
@@ -56,6 +56,44 @@ public class TargetSumArraySored {
         int sumRequired = 0;
 
         return numbers;
+    }
+
+   static class Solution {
+        public int[] twoSum(int[] numbers, int target) {
+            int left = 0;
+            int right = numbers.length-1;
+
+            while(left < right) {
+                if(numbers[left] + numbers[right] < target) {
+                    left ++;
+                } else if(numbers[left] + numbers[right] > target) {
+                    right--;
+                } else {
+                    return new int[]{left+1,right+1};
+                }
+            }
+
+            return numbers;          }
+    }
+
+    class SolutionN2 {
+        public int[] twoSum(int[] numbers, int target) {
+            int prev = 0;
+            while (prev < numbers.length && numbers[prev] <= Math.max(target,0)) {
+                int remainingSum = target - numbers[prev];
+                int pointer = prev + 1;
+
+                while (pointer < numbers.length && numbers[pointer] <= remainingSum) {
+                    int sum = remainingSum - numbers[pointer];
+                    if (sum == 0) {
+                        return new int[]{prev+1, pointer+1};
+                    } else {
+                        pointer++;
+                    }
+                }
+                prev++;
+            }
+            return numbers;          }
     }
 
 
