@@ -1,0 +1,76 @@
+| Graph Type          | Best Algorithm(s)           |
+| ------------------- | --------------------------- |
+| Unweighted          | BFS for shortest path       |
+| Weighted (positive) | Dijkstra’s                  |
+| Weighted (negative) | Bellman-Ford, Johnson's     |
+| All-pairs shortest  | Floyd-Warshall or Johnson’s |
+| DAG                 | Topological Sort            |
+| MST                 | Kruskal’s or Prim’s         |
+| SCC (directed)      | Tarjan’s or Kosaraju’s      |
+
+
+🔁 Traversal Algorithms
+Algorithm	Time Complexity	Space Complexity	Notes
+BFS (Breadth-First Search)	O(V + E)	O(V)	Uses queue; good for shortest paths in unweighted graphs
+DFS (Depth-First Search)	O(V + E)	O(V)	Uses stack/recursion
+
+📈 Shortest Path Algorithms
+Algorithm	Time Complexity	Space Complexity	Notes
+Dijkstra’s (using min-heap)	O((V + E) log V) (with priority queue)	O(V)	For graphs with non-negative weights
+Bellman-Ford	O(V × E)	O(V)	Handles negative weights
+Floyd-Warshall	O(V³)	O(V²)	All-pairs shortest paths; dense graphs
+A* (A Star)	O(E) to O(E log V) (depends on heuristic)	O(V)	Optimal with admissible heuristic
+
+🌉 Minimum Spanning Tree (MST)
+Algorithm	Time Complexity	Space Complexity	Notes
+Prim’s (with heap)	O((V + E) log V)	O(V)	Best with priority queue (min-heap)
+Kruskal’s	O(E log E)	O(V) (with Union-Find)	Requires sorting edges
+
+🔗 Connectivity / Cycles / Components
+Algorithm	Time Complexity	Space Complexity	Notes
+Union-Find (Disjoint Set)	O(α(V)) per op (almost constant)	O(V)	Used in Kruskal’s, cycle detection
+Tarjan’s (SCC)	O(V + E)	O(V)	Finds strongly connected components
+Kosaraju’s (SCC)	O(V + E)	O(V)	Another SCC finder
+Topological Sort	O(V + E)	O(V)	DAG only; used in scheduling
+
+🌀 Cycle Detection
+Graph Type	Method	Time Complexity	Space Complexity	Notes
+Undirected	DFS + parent check	O(V + E)	O(V)	Simple via visited/parent logic
+Directed	DFS + recursion stack	O(V + E)	O(V)	Uses "in recursion" tracking
+
+🔄 Others
+Algorithm	Time Complexity	Space Complexity	Notes
+Topological Sort	O(V + E)	O(V)	Only works on DAGs (Directed Acyclic Graphs)
+Johnson’s Algorithm	O(V² log V + VE)	O(V²)	All-pairs shortest paths; handles negative weights
+
+⚠️ Summary by Graph Type
+Graph Type	Best Algorithm(s)
+Unweighted	BFS for shortest path
+Weighted (positive)	Dijkstra’s
+Weighted (negative)	Bellman-Ford, Johnson's
+All-pairs shortest	Floyd-Warshall or Johnson’s
+DAG	Topological Sort
+MST	Kruskal’s or Prim’s
+SCC (directed)	Tarjan’s or Kosaraju’s
+
+Would you like a PDF table or visual chart summarizing these for reference?
+
+
+
+
+
+
+Algorithm	Best Case	Average Case	Worst Case	Space	Stable	In-place
+Bubble Sort	O(n)	O(n²)	O(n²)	O(1)	✅	✅
+Selection Sort	O(n²)	O(n²)	O(n²)	O(1)	❌	✅
+Insertion Sort	O(n)	O(n²)	O(n²)	O(1)	✅	✅
+Merge Sort	O(n log n)	O(n log n)	O(n log n)	O(n)	✅	❌
+Quick Sort	O(n log n)	O(n log n)	O(n²)	O(log n)*	❌	✅
+Heap Sort	O(n log n)	O(n log n)	O(n log n)	O(1)	❌	✅
+Counting Sort	O(n + k)	O(n + k)	O(n + k)	O(k)	✅	❌
+Radix Sort	O(nk)	O(nk)	O(nk)	O(n + k)	✅	❌
+Bucket Sort	O(n + k)	O(n + k)	O(n²)	O(n + k)	✅	❌
+TimSort (Java/Python)	O(n)	O(n log n)	O(n log n)	O(n)	✅	❌
+
+
+
