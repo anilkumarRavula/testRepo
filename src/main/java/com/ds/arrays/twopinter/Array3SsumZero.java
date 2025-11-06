@@ -24,12 +24,56 @@ import java.util.List;
  */
 public class Array3SsumZero {
     public static void main(String[] args) {
-        System.out.println(threeSum(new int[] {-4,-2,1,-5,-4,-4,4,-2,0,4,0,-2,3,1,-5,0}));
-        System.out.println(threeSum(new int[] {-4,-2,-2,-2,0,1,2,2,2,3,3,4,4,6,6}));
-       System.out.println(threeSum(new int[] {-1,0,1,2,-1,-4}));
-        System.out.println(threeSum(new int[] {-1,0,1,2,-1,-4,-2,-3,3,0,4}));
+        System.out.println(new Solution().threeSum(new int[] {-1,0,1,2,-1,-4}));
+        System.out.println(new Solution().threeSum(new int[] {0,0,0}));
+
+        System.out.println(new Solution().threeSum(new int[] {-4,-2,1,-5,-4,-4,4,-2,0,4,0,-2,3,1,-5,0}));
+        System.out.println(new Solution().threeSum(new int[] {-4,-2,-2,-2,0,1,2,2,2,3,3,4,4,6,6}));
+        System.out.println(new Solution().threeSum(new int[] {-1,0,1,2,-1,-4,-2,-3,3,0,4}));
 
 
+    }
+
+
+    static class Solution {
+        public List<List<Integer>> threeSum(int[] nums) {
+
+            return nsum(nums,3,0,0);
+        }
+        public List<List<Integer>> nsum(int[] nums,int n,int target,int index ) {
+            Arrays.sort(nums);
+            System.out.println(Arrays.toString(nums));
+            List<List<Integer>> triplets = new ArrayList<>();
+            int current = index;
+            while(current < nums.length-n+1 && nums[current] <= target) {
+
+                int required = target - nums[current];
+                int left =current+1;
+                int right = nums.length-1;
+
+                while(left < right && (current ==0 || nums[current] != nums[current-1])) {
+
+                    if(nums[left]+nums[right] == required) {
+                        triplets.add(List.of(nums[current],nums[left],nums[right]));
+
+                    while((right > left) && nums[left] == nums[left+1])  left++;
+
+                    left++;
+                    right --;
+
+                    } else if(nums[left]+nums[right] > required ) {
+                        right --;
+                    } else {
+                        left++;
+                    }
+
+
+                }
+                current++;
+            }
+
+            return triplets;
+        }
     }
 
     public static List<List<Integer>> threeSum(int[] nums) {
@@ -65,4 +109,6 @@ public class Array3SsumZero {
         }
         return  triplets;
     }
+
+
 }
