@@ -82,15 +82,9 @@ public class Main {
 
                 int currentCOst = costGrid[index[0]][index[1]];
 
-                int minCOst =  findMinCOst(inputCOst,co)
 
-
-                if(currentCOst > 0 && ) {
-                    //calculate based on surrounding regions
-                } else {
-
-                }
             }
+            return 0;
         }
 
 

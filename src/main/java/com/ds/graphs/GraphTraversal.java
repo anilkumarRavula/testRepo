@@ -8,7 +8,7 @@ import java.util.Queue;
 import static com.ds.graphs.Graph.*;
 
 public class GraphTraversal {
-    public static void main(String[] args) {
+    /*public static void main(String[] args) {
         Graph graph = new Graph(false);
         Node a = new Node(0, "0");
         Node b = new Node(1, "1");
@@ -57,6 +57,6 @@ public class GraphTraversal {
         }
         //process for unreachable nodes
         System.out.println();
-    }
+    }*/
 
 }
